@@ -97,9 +97,15 @@ REM ============================================================================
 REM  MAIN LOADING SEQUENCE
 REM ============================================================================
 
-REM Stage 1
-set /a current_stage=1
-set "stage_name=Establishing secure connection"
+REM Define stage names
+set "stage_names=Establishing secure connection;Loading mission parameters;Initializing core systems;Loading security modules;Verifying system integrity;Authenticating credentials;Loading configuration files;Preparing runtime environment;Synchronizing database;Optimizing system performance;Loading user interface;Finalizing initialization;Connecting to satellite;Decrypting data streams;Validating access tokens;Loading tactical overlays;Preparing mission briefing;Synchronizing communications;Loading target data;Finalizing download"
+
+REM Process all 20 stages
+set "stage_index=0"
+for %%s in (%stage_names%) do (
+    set /a stage_index+=1
+    set /a current_stage=!stage_index!
+    set "stage_name=%%s"
 
 echo  +-----------------------------------------------------------------------+
 echo  ^| STAGE !current_stage! OF !stage_count!: !stage_name!...
@@ -162,72 +168,8 @@ echo   ^>^> Stage file created: output\stage!current_stage!.txt
 echo.
 
 REM Brief pause between stages  
-ping 127.0.0.1 -n 2 >nul
-
-REM Stage 2
-set /a current_stage=2
-set "stage_name=Loading mission parameters"
-
-echo  +-----------------------------------------------------------------------+
-echo  ^| STAGE !current_stage! OF !stage_count!: !stage_name!...
-echo  +-----------------------------------------------------------------------+
-echo.
-
-REM 1-minute loading animation with 12 progress updates (5 seconds each)
-echo   * Initializing...
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [###.......................................] 8%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [######....................................] 17%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [##########................................] 25%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [#############.............................] 33%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [################..........................] 42%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [####################......................] 50%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [#######################...................] 58%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [##########################................] 67%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [##############################............] 75%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [#################################.........] 83%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [####################################......] 92%%
-timeout /t 5 >nul 2>nul
-if errorlevel 1 ping 127.0.0.1 -n 6 >nul
-
-echo   Progress: [##########################################] 100%% ^ Complete!
-
-REM Create stage completion file
-echo Stage !current_stage! completed > "output\stage!current_stage!.txt"
-echo   ^>^> Stage file created: output\stage!current_stage!.txt
-echo.
+ping 127.0.0.1 -n 1 >nul
+)
 
 REM ============================================================================
 REM  COMPLETION SEQUENCE
