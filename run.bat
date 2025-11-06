@@ -1,47 +1,281 @@
 @echo off
-REM Airsoft Loader - Windows Batch Launcher
-REM This file makes it easy to run the loader on Windows
+REM ============================================================================
+REM  MILITARY LOADER v2.1 - Maximum Compatibility Edition
+REM  Works on ANY Windows computer without installations
+REM  Optimized graphics using only built-in Windows commands
+REM ============================================================================
 
-title Airsoft Loader
+setlocal enabledelayedexpansion
 
-REM Try to find Python in common locations
-where python >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    python "%~dp0loader.py"
-    goto :end
-)
+REM Set console properties
+title MILITARY LOADER v2.1
+mode con: cols=80 lines=25 2>nul
 
-where python3 >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    python3 "%~dp0loader.py"
-    goto :end
-)
+REM Try to set colors (gracefully fail on older systems)
+color 0A 2>nul
 
-REM Check for Python in Program Files
-if exist "C:\Program Files\Python*\python.exe" (
-    for /d %%i in ("C:\Program Files\Python*") do (
-        "%%i\python.exe" "%~dp0loader.py"
-        goto :end
-    )
-)
+REM Clear screen with dramatic effect
+cls
+ping 127.0.0.1 -n 1 >nul
 
-if exist "C:\Program Files (x86)\Python*\python.exe" (
-    for /d %%i in ("C:\Program Files (x86)\Python*") do (
-        "%%i\python.exe" "%~dp0loader.py"
-        goto :end
-    )
-)
+REM ============================================================================
+REM  ACCESS CODE VERIFICATION
+REM ============================================================================
 
-REM Python not found
 echo.
-echo ERROR: Python is not installed or not in PATH
+echo  +========================================================================+
+echo  ^|                                                                        ^|
+echo  ^|                        SECURE ACCESS REQUIRED                         ^|
+echo  ^|                                                                        ^|
+echo  ^|                     Please enter authorization code:                   ^|
+echo  ^|                                                                        ^|
+echo  +========================================================================+
 echo.
-echo Please install Python from https://www.python.org/downloads/
-echo Make sure to check "Add Python to PATH" during installation
-echo.
-pause
-exit /b 1
 
-:end
-REM Keep window open if there was an error
-if %ERRORLEVEL% NEQ 0 pause
+set "access_code="
+set "location="
+set /p access_code="  Enter code: "
+
+REM Validate access code
+if "%access_code%"=="7298" (
+    set "location=B epulet 1. emelet"
+    echo.
+    echo  ^>^> Access granted for Location 1
+) else if "%access_code%"=="2784" (
+    set "location=A epulet 1. emelet"
+    echo.
+    echo  ^>^> Access granted for Location 2
+) else (
+    echo.
+    echo  ^>^> INVALID CODE - Access denied
+    echo.
+    pause
+    exit /b 1
+)
+
+ping 127.0.0.1 -n 2 >nul
+cls
+
+REM ============================================================================
+REM  ANIMATED HEADER
+REM ============================================================================
+
+echo.
+echo  +========================================================================+
+ping 127.0.0.1 -n 1 >nul
+echo  ^|                                                                        ^|
+ping 127.0.0.1 -n 1 >nul
+echo  ^|                        MILITARY LOADER v2.1                            ^|
+ping 127.0.0.1 -n 1 >nul
+echo  ^|                     System Initialization Protocol                     ^|
+ping 127.0.0.1 -n 1 >nul
+echo  ^|                                                                        ^|
+ping 127.0.0.1 -n 1 >nul
+echo  +========================================================================+
+echo.
+
+REM Wait for dramatic effect
+timeout /t 2 >nul 2>nul
+if errorlevel 1 (
+    ping 127.0.0.1 -n 3 >nul
+)
+
+REM ============================================================================
+REM  LOADING STAGES CONFIGURATION
+REM ============================================================================
+
+REM Create output directory if it doesn't exist
+if not exist "output" mkdir "output"
+
+REM Clear any existing stage files
+del "output\stage*.txt" >nul 2>nul
+
+set "stage_count=20"
+set "current_stage=0"
+
+REM ============================================================================
+REM  MAIN LOADING SEQUENCE
+REM ============================================================================
+
+REM Stage 1
+set /a current_stage=1
+set "stage_name=Establishing secure connection"
+
+echo  +-----------------------------------------------------------------------+
+echo  ^| STAGE !current_stage! OF !stage_count!: !stage_name!...
+echo  +-----------------------------------------------------------------------+
+    echo.
+    
+    REM 1-minute loading animation with 12 progress updates (5 seconds each)
+    echo   * Initializing...
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [###.......................................] 8%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [######....................................] 17%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [##########................................] 25%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [#############.............................] 33%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [################..........................] 42%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [####################......................] 50%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [#######################...................] 58%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [##########################................] 67%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [##############################............] 75%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [#################################.........] 83%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [####################################......] 92%%
+    timeout /t 5 >nul 2>nul
+    if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+    
+    echo   Progress: [##########################################] 100%% ^ Complete!
+  REM Create stage completion file
+echo Stage !current_stage! completed > "output\stage!current_stage!.txt"
+echo   ^>^> Stage file created: output\stage!current_stage!.txt
+echo.
+
+REM Brief pause between stages  
+ping 127.0.0.1 -n 2 >nul
+
+REM Stage 2
+set /a current_stage=2
+set "stage_name=Loading mission parameters"
+
+echo  +-----------------------------------------------------------------------+
+echo  ^| STAGE !current_stage! OF !stage_count!: !stage_name!...
+echo  +-----------------------------------------------------------------------+
+echo.
+
+REM 1-minute loading animation with 12 progress updates (5 seconds each)
+echo   * Initializing...
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [###.......................................] 8%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [######....................................] 17%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [##########................................] 25%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [#############.............................] 33%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [################..........................] 42%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [####################......................] 50%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [#######################...................] 58%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [##########################................] 67%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [##############################............] 75%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [#################################.........] 83%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [####################################......] 92%%
+timeout /t 5 >nul 2>nul
+if errorlevel 1 ping 127.0.0.1 -n 6 >nul
+
+echo   Progress: [##########################################] 100%% ^ Complete!
+
+REM Create stage completion file
+echo Stage !current_stage! completed > "output\stage!current_stage!.txt"
+echo   ^>^> Stage file created: output\stage!current_stage!.txt
+echo.
+
+REM ============================================================================
+REM  COMPLETION SEQUENCE
+REM ============================================================================
+
+echo.
+echo  +========================================================================+
+echo  ^|                                                                        ^|
+echo  ^|                    ^ ALL SYSTEMS LOADED SUCCESSFULLY!                 ^|
+echo  ^|                                                                        ^|
+echo  ^|                        System Status: OPERATIONAL                     ^|
+echo  ^|                        Security Level: MAXIMUM                        ^|
+echo  ^|                        Ready for deployment                           ^|
+echo  ^|                                                                        ^|
+echo  +========================================================================+
+echo.
+
+REM Success animation
+echo  ^>^> System ready...
+ping 127.0.0.1 -n 1 >nul
+echo  ^>^> Establishing connection...
+ping 127.0.0.1 -n 1 >nul
+echo  ^>^> All systems operational!
+echo.
+
+REM ============================================================================
+REM  MISSION LOCATION DISPLAY
+REM ============================================================================
+
+echo.
+echo  +========================================================================+
+echo  ^|                                                                        ^|
+echo  ^|                         MISSION BRIEFING                              ^|
+echo  ^|                                                                        ^|
+echo  ^|                     Proceed to: %location%                            ^|
+echo  ^|                                                                        ^|
+echo  ^|                    Systems ready for deployment                        ^|
+echo  ^|                                                                        ^|
+echo  +========================================================================+
+echo.
+
+echo  ^>^> All operatives proceed to designated coordinates
+echo.
+echo  Press any key to close this terminal...
+pause >nul
+
+REM Final pause
+ping 127.0.0.1 -n 2 >nul
+
+endlocal
+exit /b 0
